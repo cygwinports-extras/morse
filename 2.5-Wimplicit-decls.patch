@@ -1,0 +1,55 @@
+--- origsrc/morse-2.5/qso.d/QSO.c	2010-10-13 00:35:21.000000000 -0500
++++ src/morse-2.5/qso.d/QSO.c	2013-11-08 06:35:22.397676200 -0600
+@@ -106,11 +106,17 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <time.h>
+ 
+ char *A_Or_An (char *);
+ char *Choose (char *Words[], int Number);
+ int License_Seed (void);
++int CountStrings (char *StringVector[]);
++void PutQSO (void);
++int Roll (int Number);
++int make_freq (void);
++void PutQ_And_Freq (void);
+ 
+ int their_age;			/* PERSON'S AGE, SO THEY AREN'T LICENSED MORE
+                                  * THAN THEIR AGE */
+--- origsrc/morse-2.5/qso.d/make_fre.c	2010-10-13 00:11:39.000000000 -0500
++++ src/morse-2.5/qso.d/make_fre.c	2013-11-08 06:46:41.389512300 -0600
+@@ -4,6 +4,8 @@
+ #define M10 5
+ #define NUM_BAND 4
+ 
++int Roll (int Number);
++
+ int
+ make_freq (void)
+ {
+--- origsrc/morse-2.5/qso.d/put_form.c	2010-10-13 00:11:39.000000000 -0500
++++ src/morse-2.5/qso.d/put_form.c	2013-11-08 06:46:16.710100700 -0600
+@@ -1,5 +1,21 @@
+ #include <stdio.h>
+ 
++void PutRST (void);
++void PutName (void);
++void PutLocation (void);
++void PutMisc (void);
++void PutRig (void);
++void PutWeather (void);
++void PutJob (void);
++void PutAge (void);
++void PutLicense (void);
++void PutRST (void);
++void PutThanks (void);
++void PutFirstCallsign (void);
++void PutLastCallsign (void);
++void PutQ_And_Freq (void);
++int Roll (int Number);
++
+ void
+ PutForm0 (void)
+ {

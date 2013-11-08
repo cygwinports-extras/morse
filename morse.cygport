@@ -1,5 +1,5 @@
 NAME="morse"
-VERSION=2.2
+VERSION=2.5
 RELEASE=1
 CATEGORY="Text"
 SUMMARY="Morse code training program"
@@ -10,11 +10,12 @@ vary the training method. In one of the simpler modes, this program will take
 text from standard input and render it as Morse-code beeps."
 HOMEPAGE="http://www.catb.org/~esr/morse/"
 SRC_URI="http://www.catb.org/~esr/morse/${NAME}-${VERSION}.tar.gz"
+PATCH_URI="2.5-Wimplicit-decls.patch"
 
 src_compile() {
 	lndirs
 	cd ${B}
-	cygmake DEVICE=OSS morse QSO
+	cygmake DEVICE=OSS morse QSO CFLAGS="${CFLAGS}"
 }
 
 src_test() {
